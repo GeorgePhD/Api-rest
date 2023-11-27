@@ -1,0 +1,23 @@
+this folder goes in c:/program files
+also create a folder named data and inside another folder
+ named db when installing monmgodb
+mongoose = allows you to connect to the database from mongodb.
+
+
+in case of connection failure:
+Si tienes las últimas versiones de node, quizá te pueda dar error la conexión,
+
+Para arreglarlo cambia la palabra localhost por 127.0.0.1
+
+Quedando así: await mongoose.connect("mongodb://127.0.0.1:27017/My_blog"); 
+
+Y si te da algún warning lo puedes solucionar como explico en la clase 99 :)
+
+
+
+conexion.js = is the server created.
+
+
+
+
+
