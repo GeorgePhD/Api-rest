@@ -2,7 +2,7 @@
 const {conexion} = require('./basedatos/conexion'); //pay attention to the paths!!!!!!!!
 const express = require('express');
 const cors = require('cors');
-const res = require('res');
+//const res = require('res');
 
 console.log('App initialized') //run in node = node index.js
 
@@ -23,7 +23,7 @@ app.use(cors());
 
 //read and convert body to object js
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+//app.use(express.urlencoded({ extended: false }));
 
 //FIRST ALTERNATIVE METHOD
 //create routes
@@ -45,11 +45,22 @@ app.use(express.urlencoded({ extended: false }));
     `);
 
 }); */
+//Routes
+
+//routes
+const routes_article = require('./routes/article');
+
+// load routes
+app.use("/api", routes_article);
+
+
+
+
 
 //SECOND ALTERNATIVE METHOD
 app.get('/testing', (req, res) => {
     console.log('endpoint executed');
-    res.status(200).send ({
+    return res.status(200).json ({
                             curso: "Master on react", 
                             teacher: "George", 
                             Duración: "100 years"
@@ -58,8 +69,17 @@ app.get('/testing', (req, res) => {
 }); //if you wanna return an array of json objects you can use as follows = res.status(200).send ([{curso: "Master on react", teacher: "George", Duración: "100 years"},
 //{curso: "Master on react", teacher: "George", Duración: "100 years"}]);
 
+
+//Test route hardcoded
+app.get('/', (req, res) => {
+    console.log('endpoint executed');
+    return res.status(200).send ("<h1>Api rest with node JS</h1>");
+});
+
+
 app.listen(port, () => {
     console.log('Server running on port ' + port);
+    
 });
 
 

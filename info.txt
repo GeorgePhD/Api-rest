@@ -11,13 +11,21 @@ Para arreglarlo cambia la palabra localhost por 127.0.0.1
 
 Quedando así: await mongoose.connect("mongodb://127.0.0.1:27017/My_blog"); 
 
-Y si te da algún warning lo puedes solucionar como explico en la clase 99 :)
+Y si te da algún warning lo puedes solucionar como explico en la clase 99
 
 
 
 conexion.js = is the server created.
 
 
+IMPORTANT! use cmd to run this
+path :  C:/Program Files/MongoDB/Server/7.0/bin
 
+run mongosh.exe : this connects to the server, allows you to interact with the server using JS. it connects to the DB.
+now you can see the info from the DB using MongoDB compass.
+
+mongod.exe = starts the server : use :  C:\data7\db ?????
+
+to start the server go to D:/george-vs-code/01-studies/api-rest-node-VR and run npm start.
 
 

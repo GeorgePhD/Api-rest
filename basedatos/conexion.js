@@ -1,6 +1,3 @@
-
-
-
 const mongoose = require('mongoose');
 
 
@@ -11,7 +8,7 @@ const conexion = async() => {
     
     try {
         
-
+        //mongoose.set('strictQuery', false);
         await mongoose.connect("mongodb://127.0.0.1:27017/My_blog");
         //do this using curly brackets before the parentheses and add a coma after the apostrophe after the word My_blog.
         //parameters to add in case of connection failure
