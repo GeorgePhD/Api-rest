@@ -15,6 +15,7 @@ example :
 db.ps4.insertOne({title: "The Last of Us Part 2", genre: "adventures", year: 2020});
 db.ps4.insertMany({title: "The Last of Us Part 2", genre: "adventures", year: 2020}, {title: "The Last of Us Part 2", genre: "adventures", year: 2020});
 show collections = show collections in the DB
+db.ps4.find() = shows the info inside the DB
 
 
 ## Initialize the node project
