@@ -30,4 +30,4 @@ db.ps4.find() = shows the info inside the DB
 11. npm install nodemon --save-dev = it helps refreshing the server, it is like a watcher in the front end projects.
 12. Remember to run the npm start to use nodemon.
 
-## Connect to DB
+## Connect to DB = mongosh.exe

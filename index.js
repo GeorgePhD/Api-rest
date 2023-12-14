@@ -14,8 +14,8 @@ const port = 3900;
 app.use(cors());
 
 //convert body to json object
-app.use(express.json());
-
+app.use(express.json()); // recibir datos con content-type: application/json
+app.use(express.urlencoded({ extended: true })); //form-urlencoded
 
 //create routes
 app.get('/', (req, res) => {
@@ -24,8 +24,19 @@ app.get('/', (req, res) => {
     return res.status(200).send('<h1>First route working great, creating api rest with node js</h1>');
 });
 
+//routes
+const rutas_articulo = require('./rutas/rutas-articulo.js');
 
-app.get('/testing', (req, res) => {
+//load routes
+app.use("/api", rutas_articulo);
+
+
+
+
+
+
+//hardcore testing routes
+app.get('/probando', (req, res) => {
 
     return res.status(200).json([
         {
