@@ -12,14 +12,14 @@ const curso = (req, res) => {
 
     return res.status(200).json([
         {
-        course: "Master in Web Development",
-        name: "George",
-        age: 40,
+            course: "Master in Web Development",
+            name: "George",
+            age: 40,
         },
         {
-        course: "Master in coffee Development",
-        name: "Fer",
-        age: 30,
+            course: "Master in coffee Development",
+            name: "Fer",
+            age: 30,
         }
     ]);
 };
@@ -42,7 +42,7 @@ const crear = (req, res) => {
         }
     } catch (error) {
         return res.status(400).json({
-            status:"error",
+            status: "error",
             message: "Faltan datos por enviar"
         })
     };
@@ -59,18 +59,18 @@ const crear = (req, res) => {
 
     //guardar articulo en base de datos
 
-    articulo.save() 
+    articulo.save()
         .then(articuloGuardado => {
 
             if (!articuloGuardado) {
                 return res.status(400).json({
-                    status:"error",
+                    status: "error",
                     message: "No se ha guardado el articulo"
                 });
-            
-        }
 
-        return res.status(200).json({
+            }
+            //devolver resultado
+            return res.status(200).json({
                 status: "success!",
                 articulo: articuloGuardado,
                 mensaje: "artículo guardado. Create action in my articles controller, use post method in postman to see this response",
@@ -78,30 +78,42 @@ const crear = (req, res) => {
         })
         .catch(error => {
             return res.status(400).json({
-                status:"error",
+                status: "error",
                 message: "No se ha guardado el articulo",
                 error: error.message // optionally includes the error message in the response.
             });
         });
+};
+const listar = (req, res) => {
+    Articulo.find({})
+        .exec()
+        .then(articulos => {
+            if (!articulos || articulos.length === 0) {
+                return res.status(404).json({
+                    status: "error",
+                    message: "No se han encontrado artículos"
+                });
+            }
 
+            return res.status(200).json({
+                status: "success!",
+                articulos
+            });
+        })
+        .catch(error => {
+            return res.status(500).json({
+                status: "error",
+                message: "Error al buscar artículos",
+                error: error.message
+            });
+        });
+};
 
-        //devolver resultado
-    
-
-    //devolver saultado
-
-
-
-
-
-
-
-    
-}
 
 
 module.exports = {
     prueba,
-    curso, 
-    crear
+    curso,
+    crear,
+    listar
 }

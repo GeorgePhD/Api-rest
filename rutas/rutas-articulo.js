@@ -11,6 +11,7 @@ router.get('/curso', ArticuloControlador.curso);
 
 //ruta util
 router.post('/crear', ArticuloControlador.crear);
+router.get('/articulos', ArticuloControlador.listar);
 
 module.exports = router;
 
