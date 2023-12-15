@@ -85,28 +85,37 @@ const crear = (req, res) => {
         });
 };
 const listar = (req, res) => {
-    Articulo.find({})
-        .exec()
-        .then(articulos => {
-            if (!articulos || articulos.length === 0) {
-                return res.status(404).json({
-                    status: "error",
-                    message: "No se han encontrado artículos"
-                });
-            }
 
-            return res.status(200).json({
-                status: "success!",
-                articulos
+            let consulta = Articulo.find({});
+
+            if(req.params.ultimos){
+                consulta.limit(3);
+            }
+            
+            consulta.sort({fecha: -1})
+                    .exec()
+                    .then(articulos => {
+                    if (!articulos || articulos.length === 0) {
+                        return res.status(404).json({
+                            status: "error",
+                            message: "No se han encontrado artículos"
+                        });
+                    }
+
+                return res.status(200).json({
+                    status: "success!",
+                    //parametro: req.paramns.ultimos,
+                    contador: articulos.length,
+                    articulos
+                });
+            })
+            .catch(error => {
+                return res.status(500).json({
+                    status: "error",
+                    message: "Error al buscar artículos",
+                    error: error.message
+                });
             });
-        })
-        .catch(error => {
-            return res.status(500).json({
-                status: "error",
-                message: "Error al buscar artículos",
-                error: error.message
-            });
-        });
 };
 
 
